@@ -15,6 +15,7 @@ import { Navigate } from "@/Routes/types/screenProps";
 
 export default function SignIn() {
   const navigation = useNavigation<Navigate>();
+
   return (
     <Background>
       <Container behavior={Platform.OS === "ios" ? "padding" : ""} enable>
@@ -32,7 +33,7 @@ export default function SignIn() {
           <SubmitText>Acessar</SubmitText>
         </SubmitButton>
 
-        <Link onpress={() => navigation.navigate("SignUp")}>
+        <Link onPress={() => navigation.navigate("SignUp")}>
           <LinkText>Criar uma Conta</LinkText>
         </Link>
       </Container>
