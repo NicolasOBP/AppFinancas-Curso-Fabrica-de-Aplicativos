@@ -1,12 +1,9 @@
-import { Platform, Text, View } from "react-native";
+import { Platform } from "react-native";
 import {
   AreaInput,
   Background,
   Container,
   Input,
-  Link,
-  LinkText,
-  Logo,
   SubmitButton,
   SubmitText,
 } from "@/Pages/SignIn/style";
