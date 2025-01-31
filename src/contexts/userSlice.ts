@@ -1,9 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
+import api from "@/services/api";
+import { useNavigation } from "@react-navigation/native";
+import { Navigate } from "@/Routes/types/screenProps";
+import useSignUp from "../hooks/useSignUp";
 
 type User = {
   name: string;
   email: string;
+  password: string;
 };
 
 export interface UserState {
