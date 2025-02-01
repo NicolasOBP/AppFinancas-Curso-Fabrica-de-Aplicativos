@@ -16,12 +16,13 @@ export const Logo = styled.Image`
 `;
 
 export const AreaInput = styled.View`
-  flex-direction: row;
+  flex-direction: column;
+  width: 90%;
 `;
 
 export const Input = styled.TextInput`
   background-color: #fff;
-  width: 90%;
+  width: 100%;
   font-size: 17px;
   padding: 10px;
   border-radius: 8px;
@@ -52,4 +53,13 @@ export const Link = styled.TouchableOpacity`
 export const LinkText = styled.Text`
   color: #171717;
   font-size: 15px;
+`;
+
+export const TextError = styled.Text`
+  color: red;
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  margin-top: -15px;
+  padding-left: 10px;
 `;

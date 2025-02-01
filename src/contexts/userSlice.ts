@@ -1,22 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
-import api from "@/services/api";
-import { useNavigation } from "@react-navigation/native";
-import { Navigate } from "@/Routes/types/screenProps";
-import useSignUp from "../hooks/useSignUp";
-
-type User = {
-  name: string;
-  email: string;
-  password: string;
-};
+import { User } from "@/types/user";
 
 export interface UserState {
   user: User | null;
+  loadingAuth: boolean;
 }
 
 const initialState: UserState = {
   user: null,
+  loadingAuth: false,
 };
 
 export const userSlice = createSlice({
@@ -26,10 +19,14 @@ export const userSlice = createSlice({
     setUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
     },
+    setLoadingAuth: (state, action: PayloadAction<boolean>) => {
+      state.loadingAuth = action.payload;
+    },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, setLoadingAuth } = userSlice.actions;
 export default userSlice.reducer;
 
 export const selectUser = (state: RootState) => state.user.user;
+export const selectLoading = (state: RootState) => state.user.loadingAuth;

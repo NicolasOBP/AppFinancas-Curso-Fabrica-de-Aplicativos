@@ -1,47 +1,42 @@
-import { Platform } from "react-native";
+import { ActivityIndicator, Platform } from "react-native";
 import {
-  AreaInput,
   Background,
   Container,
-  Input,
   SubmitButton,
   SubmitText,
 } from "@/Pages/SignIn/style";
-import { useState } from "react";
 import useSignUp from "@/hooks/useSignUp";
+import { useAppSelector } from "@/contexts/hooks";
+import { selectLoading } from "@/contexts/userSlice";
+import { useHookFormSignUp } from "./hooks/hookForm";
+import ControllerSignUP from "./components/Controller";
 
 export default function SignUp() {
+  const { handleSubmit, control } = useHookFormSignUp();
   const { signUp } = useSignUp();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const loading = useAppSelector(selectLoading);
 
   return (
     <Background>
       <Container behavior={Platform.OS === "ios" ? "padding" : ""} enable>
-        <AreaInput>
-          <Input placeholder="Nome" value={name} onChangeText={setName} />
-        </AreaInput>
+        <ControllerSignUP placeholder="Nome" control={control} name="name" />
+        <ControllerSignUP
+          placeholder="Seu email"
+          control={control}
+          name="email"
+        />
+        <ControllerSignUP
+          placeholder="Sua Senha"
+          control={control}
+          name="password"
+        />
 
-        <AreaInput>
-          <Input
-            placeholder="Seu email"
-            value={email}
-            onChangeText={setEmail}
-          />
-        </AreaInput>
-
-        <AreaInput>
-          <Input
-            placeholder="Sua Senha"
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry={true}
-          />
-        </AreaInput>
-
-        <SubmitButton onPress={() => signUp({ name, email, password })}>
-          <SubmitText>Cadastrar</SubmitText>
+        <SubmitButton onPress={handleSubmit(signUp)}>
+          {loading ? (
+            <ActivityIndicator size={20} color="#FFF" />
+          ) : (
+            <SubmitText>Cadastrar</SubmitText>
+          )}
         </SubmitButton>
       </Container>
     </Background>
