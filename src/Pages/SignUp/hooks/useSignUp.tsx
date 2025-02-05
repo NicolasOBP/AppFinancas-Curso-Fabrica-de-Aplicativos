@@ -2,14 +2,14 @@ import { useAppDispatch } from "@/contexts/hooks";
 import { setLoadingAuth } from "@/contexts/userSlice";
 import { NavigateAuth } from "@/Routes/types/screenProps";
 import api from "@/services/api";
-import { User } from "@/types/user";
 import { useNavigation } from "@react-navigation/native";
+import { UserSignUpSchema } from "./userSignUpSchema";
 
 export default function useSignUp() {
   const navigation = useNavigation<NavigateAuth>();
   const dispatch = useAppDispatch();
 
-  async function signUp(user: User) {
+  async function signUp(user: UserSignUpSchema) {
     if (user.name === "" || user.email === "" || user.password === "") {
       alert("Preencha todos os campos");
       return;

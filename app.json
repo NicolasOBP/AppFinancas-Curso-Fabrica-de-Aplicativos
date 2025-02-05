@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.nicolasobp.AppFinanc"
     },
     "web": {
       "favicon": "./assets/favicon.png"

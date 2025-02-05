@@ -11,7 +11,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { NavigateAuth } from "@/Routes/types/screenProps";
 import { useHookFormSignIn } from "./hooks/hookForm";
-import ControllerSignIn from "./Controller";
+import ControllerSignIn from "./components/Controller";
 import useSignIn from "./hooks/useSignIn";
 import { useAppSelector } from "@/contexts/hooks";
 import { selectLoading } from "@/contexts/userSlice";

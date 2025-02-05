@@ -1,7 +1,7 @@
 import { Control, Controller } from "react-hook-form";
 import { AreaInput, Input, TextError } from "@/Pages/SignIn/style";
 import { Fragment } from "react";
-import { UserSignInSchema } from "../hooks/userSignInSchema";
+import { UserSignInSchema } from "../../hooks/userSignInSchema";
 
 type Props = {
   control: Control<UserSignInSchema>;
