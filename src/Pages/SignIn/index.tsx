@@ -11,10 +11,10 @@ import {
   SubmitText,
 } from "./style";
 import { useNavigation } from "@react-navigation/native";
-import { Navigate } from "@/Routes/types/screenProps";
+import { NavigateAuth } from "@/Routes/types/screenProps";
 
 export default function SignIn() {
-  const navigation = useNavigation<Navigate>();
+  const navigation = useNavigation<NavigateAuth>();
 
   return (
     <Background>

@@ -30,3 +30,4 @@ export default userSlice.reducer;
 
 export const selectUser = (state: RootState) => state.user.user;
 export const selectLoading = (state: RootState) => state.user.loadingAuth;
+export const selectSigned = (state: RootState) => !!state.user.user;

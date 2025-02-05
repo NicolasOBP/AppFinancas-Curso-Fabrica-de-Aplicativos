@@ -1,12 +1,12 @@
 import { useAppDispatch } from "@/contexts/hooks";
 import { setLoadingAuth } from "@/contexts/userSlice";
-import { Navigate } from "@/Routes/types/screenProps";
+import { NavigateAuth } from "@/Routes/types/screenProps";
 import api from "@/services/api";
 import { User } from "@/types/user";
 import { useNavigation } from "@react-navigation/native";
 
 export default function useSignUp() {
-  const navigation = useNavigation<Navigate>();
+  const navigation = useNavigation<NavigateAuth>();
   const dispatch = useAppDispatch();
 
   async function signUp(user: User) {

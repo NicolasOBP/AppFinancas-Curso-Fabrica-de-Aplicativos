@@ -20,11 +20,13 @@ export default function SignUp() {
     <Background>
       <Container behavior={Platform.OS === "ios" ? "padding" : ""} enable>
         <ControllerSignUP placeholder="Nome" control={control} name="name" />
+
         <ControllerSignUP
           placeholder="Seu email"
           control={control}
           name="email"
         />
+
         <ControllerSignUP
           placeholder="Sua Senha"
           control={control}
