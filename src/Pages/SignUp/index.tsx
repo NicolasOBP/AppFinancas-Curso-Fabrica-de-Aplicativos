@@ -5,7 +5,7 @@ import {
   SubmitButton,
   SubmitText,
 } from "@/Pages/SignIn/style";
-import useSignUp from "@/hooks/useSignUp";
+import useSignUp from "@/Pages/SignUp/hooks/useSignUp";
 import { useAppSelector } from "@/contexts/hooks";
 import { selectLoading } from "@/contexts/userSlice";
 import { useHookFormSignUp } from "./hooks/hookForm";

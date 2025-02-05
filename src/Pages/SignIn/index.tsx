@@ -1,9 +1,7 @@
-import { Platform } from "react-native";
+import { ActivityIndicator, Platform } from "react-native";
 import {
-  AreaInput,
   Background,
   Container,
-  Input,
   Link,
   LinkText,
   Logo,
@@ -12,25 +10,41 @@ import {
 } from "./style";
 import { useNavigation } from "@react-navigation/native";
 import { NavigateAuth } from "@/Routes/types/screenProps";
+import { useHookFormSignIn } from "./hooks/hookForm";
+import ControllerSignIn from "./Controller";
+import useSignIn from "./hooks/useSignIn";
+import { useAppSelector } from "@/contexts/hooks";
+import { selectLoading } from "@/contexts/userSlice";
 
 export default function SignIn() {
   const navigation = useNavigation<NavigateAuth>();
+  const { control, handleSubmit } = useHookFormSignIn();
+  const { signIn } = useSignIn();
+  const loading = useAppSelector(selectLoading);
 
   return (
     <Background>
       <Container behavior={Platform.OS === "ios" ? "padding" : ""} enable>
         <Logo source={require("@/assets/Logo.png")} />
 
-        <AreaInput>
-          <Input placeholder="Seu email" />
-        </AreaInput>
+        <ControllerSignIn
+          control={control}
+          name="email"
+          placeholder="Seu Email"
+        />
 
-        <AreaInput>
-          <Input placeholder="Sua senha" />
-        </AreaInput>
+        <ControllerSignIn
+          control={control}
+          name="password"
+          placeholder="Sua Senha"
+        />
 
-        <SubmitButton activeOpacity={0.8}>
-          <SubmitText>Acessar</SubmitText>
+        <SubmitButton onPress={handleSubmit(signIn)} activeOpacity={0.8}>
+          {loading ? (
+            <ActivityIndicator size={20} color="#fff" />
+          ) : (
+            <SubmitText>Acessar</SubmitText>
+          )}
         </SubmitButton>
 
         <Link onPress={() => navigation.navigate("SignUp")}>
